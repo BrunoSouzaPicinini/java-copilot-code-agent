@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import com.mergingtonhigh.schoolmanagement.domain.entities.Activity;
 import com.mergingtonhigh.schoolmanagement.domain.entities.Teacher;
 import com.mergingtonhigh.schoolmanagement.domain.valueobjects.ActivityType;
+import com.mergingtonhigh.schoolmanagement.domain.valueobjects.DifficultyLevel;
 import com.mergingtonhigh.schoolmanagement.domain.valueobjects.ScheduleDetails;
 
 import io.mongock.api.annotations.ChangeUnit;
@@ -58,19 +59,20 @@ public class V001_InitialDatabaseSetup {
         }
 
         private void seedActivities() {
-                // Clube de Xadrez
+                // Clube de Xadrez (Iniciante)
                 Activity chessClub = new Activity(
                                 "Clube de Xadrez",
-                                "Aprenda estratégias e participe de torneios de xadrez",
+                                "Aprenda estratégias básicas e participe de torneios de xadrez para iniciantes",
                                 "Segundas e sextas-feiras, 15:15 - 16:45",
                                 new ScheduleDetails(List.of("Monday", "Friday"), LocalTime.of(15, 15),
                                                 LocalTime.of(16, 45)),
                                 12,
-                                ActivityType.ACADEMIC);
+                                ActivityType.ACADEMIC,
+                                DifficultyLevel.BEGINNER);
                 chessClub.setParticipants(List.of("michael@mergington.edu", "daniel@mergington.edu"));
                 mongoTemplate.save(chessClub);
 
-                // Aula de Programação
+                // Aula de Programação (Intermediário)
                 Activity programmingClass = new Activity(
                                 "Aula de Programação",
                                 "Aprenda fundamentos de programação e desenvolva projetos de software",
@@ -78,7 +80,8 @@ public class V001_InitialDatabaseSetup {
                                 new ScheduleDetails(List.of("Tuesday", "Thursday"), LocalTime.of(7, 0),
                                                 LocalTime.of(8, 0)),
                                 20,
-                                ActivityType.TECHNOLOGY);
+                                ActivityType.TECHNOLOGY,
+                                DifficultyLevel.INTERMEDIATE);
                 programmingClass.setParticipants(List.of("emma@mergington.edu", "sophia@mergington.edu"));
                 mongoTemplate.save(programmingClass);
 
@@ -141,58 +144,63 @@ public class V001_InitialDatabaseSetup {
                 dramaClub.setParticipants(List.of("ella@mergington.edu", "scarlett@mergington.edu"));
                 mongoTemplate.save(dramaClub);
 
-                // Clube de Matemática
+                // Clube de Matemática (Avançado)
                 Activity mathClub = new Activity(
                                 "Clube de Matemática",
-                                "Resolva problemas desafiadores e prepare-se para competições de matemática",
+                                "Resolva problemas desafiadores e prepare-se para competições de matemática avançadas",
                                 "Terças-feiras, 07:15 - 08:00",
                                 new ScheduleDetails(List.of("Tuesday"), LocalTime.of(7, 15), LocalTime.of(8, 0)),
                                 10,
-                                ActivityType.ACADEMIC);
+                                ActivityType.ACADEMIC,
+                                DifficultyLevel.ADVANCED);
                 mathClub.setParticipants(List.of("james@mergington.edu", "benjamin@mergington.edu"));
                 mongoTemplate.save(mathClub);
 
-                // Equipe de Debates
+                // Equipe de Debates (Intermediário)
                 Activity debateTeam = new Activity(
                                 "Equipe de Debates",
-                                "Desenvolva habilidades de oratória e argumentação",
+                                "Desenvolva habilidades de oratória e argumentação intermediárias",
                                 "Sextas-feiras, 15:30 - 17:30",
                                 new ScheduleDetails(List.of("Friday"), LocalTime.of(15, 30), LocalTime.of(17, 30)),
                                 12,
-                                ActivityType.ACADEMIC);
+                                ActivityType.ACADEMIC,
+                                DifficultyLevel.INTERMEDIATE);
                 debateTeam.setParticipants(List.of("charlotte@mergington.edu", "amelia@mergington.edu"));
                 mongoTemplate.save(debateTeam);
 
-                // Oficina de Robótica
+                // Oficina de Robótica (Avançado)
                 Activity roboticsWorkshop = new Activity(
                                 "Oficina de Robótica",
-                                "Construa e programe robôs em nossa oficina de última geração",
+                                "Construa e programe robôs complexos em nossa oficina de última geração",
                                 "Sábados, 10:00 - 14:00",
                                 new ScheduleDetails(List.of("Saturday"), LocalTime.of(10, 0), LocalTime.of(14, 0)),
                                 15,
-                                ActivityType.TECHNOLOGY);
+                                ActivityType.TECHNOLOGY,
+                                DifficultyLevel.ADVANCED);
                 roboticsWorkshop.setParticipants(List.of("ethan@mergington.edu", "oliver@mergington.edu"));
                 mongoTemplate.save(roboticsWorkshop);
 
-                // Olimpíada de Ciências
+                // Olimpíada de Ciências (Avançado)
                 Activity scienceOlympiad = new Activity(
                                 "Olimpíada de Ciências",
-                                "Preparação para competições científicas regionais e estaduais aos fins de semana",
+                                "Preparação avançada para competições científicas regionais e estaduais aos fins de semana",
                                 "Sábados, 13:00 - 16:00",
                                 new ScheduleDetails(List.of("Saturday"), LocalTime.of(13, 0), LocalTime.of(16, 0)),
                                 18,
-                                ActivityType.ACADEMIC);
+                                ActivityType.ACADEMIC,
+                                DifficultyLevel.ADVANCED);
                 scienceOlympiad.setParticipants(List.of("isabella@mergington.edu", "lucas@mergington.edu"));
                 mongoTemplate.save(scienceOlympiad);
 
-                // Torneio de Xadrez
+                // Torneio de Xadrez (Avançado)
                 Activity chessTournament = new Activity(
                                 "Torneio de Xadrez",
-                                "Torneio semanal para jogadores sérios de xadrez com classificações",
+                                "Torneio semanal para jogadores experientes de xadrez com classificações",
                                 "Domingos, 14:00 - 17:00",
                                 new ScheduleDetails(List.of("Sunday"), LocalTime.of(14, 0), LocalTime.of(17, 0)),
                                 16,
-                                ActivityType.ACADEMIC);
+                                ActivityType.ACADEMIC,
+                                DifficultyLevel.ADVANCED);
                 chessTournament.setParticipants(List.of("william@mergington.edu", "jacob@mergington.edu"));
                 mongoTemplate.save(chessTournament);
 
@@ -207,7 +215,7 @@ public class V001_InitialDatabaseSetup {
                 communityService.setParticipants(List.of("grace@mergington.edu", "aiden@mergington.edu"));
                 mongoTemplate.save(communityService);
 
-                // Manga Maniacs
+                // Manga Maniacs (sem nível específico - para todos)
                 Activity mangaManiacs = new Activity(
                                 "Manga Maniacs",
                                 "Explore as histórias fantásticas dos personagens mais interessantes dos Mangás japoneses (romances gráficos)",
@@ -216,6 +224,17 @@ public class V001_InitialDatabaseSetup {
                                 15,
                                 ActivityType.ARTS);
                 mongoTemplate.save(mangaManiacs);
+
+                // Introdução à Arte (Iniciante)
+                Activity beginnerArt = new Activity(
+                                "Introdução à Arte",
+                                "Aprenda técnicas básicas de desenho e pintura para iniciantes",
+                                "Quartas-feiras, 16:00 - 17:30",
+                                new ScheduleDetails(List.of("Wednesday"), LocalTime.of(16, 0), LocalTime.of(17, 30)),
+                                12,
+                                ActivityType.ARTS,
+                                DifficultyLevel.BEGINNER);
+                mongoTemplate.save(beginnerArt);
         }
 
         private void seedTeachers() {
@@ -256,7 +275,7 @@ public class V001_InitialDatabaseSetup {
                                 "Clube de Xadrez", "Aula de Programação", "Fitness Matinal", "Time de Futebol",
                                 "Time de Basquete", "Clube de Arte", "Clube de Teatro", "Clube de Matemática",
                                 "Equipe de Debates", "Oficina de Robótica", "Olimpíada de Ciências",
-                                "Torneio de Xadrez", "Serviço Comunitário", "Manga Maniacs")), Activity.class);
+                                "Torneio de Xadrez", "Serviço Comunitário", "Manga Maniacs", "Introdução à Arte")), Activity.class);
 
                 // Remove all seeded teachers
                 mongoTemplate.remove(new Query(Criteria.where("_id").in("admin", "mrodriguez", "mchen", "principal")),

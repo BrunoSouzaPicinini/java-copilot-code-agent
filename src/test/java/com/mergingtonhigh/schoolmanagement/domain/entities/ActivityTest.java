@@ -2,6 +2,7 @@ package com.mergingtonhigh.schoolmanagement.domain.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -11,6 +12,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import com.mergingtonhigh.schoolmanagement.domain.valueobjects.ActivityType;
+import com.mergingtonhigh.schoolmanagement.domain.valueobjects.DifficultyLevel;
 import com.mergingtonhigh.schoolmanagement.domain.valueobjects.Email;
 import com.mergingtonhigh.schoolmanagement.domain.valueobjects.ScheduleDetails;
 
@@ -136,6 +138,51 @@ class ActivityTest {
         assertEquals(List.of("Tuesday"), mangaManiacs.getScheduleDetails().days());
         assertEquals(LocalTime.of(19, 0), mangaManiacs.getScheduleDetails().startTime());
         assertEquals(LocalTime.of(20, 0), mangaManiacs.getScheduleDetails().endTime());
+    }
+
+    @Test
+    void shouldCreateActivityWithDifficultyLevel() {
+        // Arrange
+        ScheduleDetails schedule = new ScheduleDetails(
+                List.of("Monday", "Wednesday"),
+                LocalTime.of(15, 30),
+                LocalTime.of(17, 0));
+
+        // Act
+        Activity activity = new Activity(
+                "Advanced Chess Club",
+                "Advanced chess strategies and tournament preparation",
+                "Seg/Qua 15:30-17:00",
+                schedule,
+                8,
+                ActivityType.ACADEMIC,
+                DifficultyLevel.ADVANCED);
+
+        // Assert
+        assertEquals("Advanced Chess Club", activity.getName());
+        assertEquals(DifficultyLevel.ADVANCED, activity.getDifficultyLevel());
+        assertEquals(ActivityType.ACADEMIC, activity.getType());
+    }
+
+    @Test
+    void shouldCreateActivityWithoutDifficultyLevel() {
+        // Arrange & Act
+        Activity activity = createTestActivity();
+
+        // Assert
+        assertNull(activity.getDifficultyLevel()); // Should be null for all-levels activities
+    }
+
+    @Test
+    void shouldSetAndGetDifficultyLevel() {
+        // Arrange
+        Activity activity = createTestActivity();
+
+        // Act
+        activity.setDifficultyLevel(DifficultyLevel.INTERMEDIATE);
+
+        // Assert
+        assertEquals(DifficultyLevel.INTERMEDIATE, activity.getDifficultyLevel());
     }
 
     private Activity createTestActivity() {

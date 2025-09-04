@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import com.mergingtonhigh.schoolmanagement.application.dtos.ActivityDTO;
 import com.mergingtonhigh.schoolmanagement.application.dtos.ActivityTypeDTO;
+import com.mergingtonhigh.schoolmanagement.application.dtos.DifficultyLevelDTO;
 import com.mergingtonhigh.schoolmanagement.domain.entities.Activity;
 
 /**
@@ -34,6 +35,13 @@ public class ActivityMapper {
                     activity.getType().getTextColor());
         }
 
+        DifficultyLevelDTO difficultyLevelDTO = null;
+        if (activity.getDifficultyLevel() != null) {
+            difficultyLevelDTO = new DifficultyLevelDTO(
+                    activity.getDifficultyLevel().name().toLowerCase(),
+                    activity.getDifficultyLevel().getLabel());
+        }
+
         return new ActivityDTO(
                 activity.getName(),
                 activity.getDescription(),
@@ -42,6 +50,7 @@ public class ActivityMapper {
                 activity.getMaxParticipants(),
                 activity.getParticipants(),
                 activity.getCurrentParticipantCount(),
-                typeDTO);
+                typeDTO,
+                difficultyLevelDTO);
     }
 }

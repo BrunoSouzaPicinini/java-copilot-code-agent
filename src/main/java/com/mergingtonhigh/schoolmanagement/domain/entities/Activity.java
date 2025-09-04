@@ -7,6 +7,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.mergingtonhigh.schoolmanagement.domain.valueobjects.ActivityType;
+import com.mergingtonhigh.schoolmanagement.domain.valueobjects.DifficultyLevel;
 import com.mergingtonhigh.schoolmanagement.domain.valueobjects.Email;
 import com.mergingtonhigh.schoolmanagement.domain.valueobjects.ScheduleDetails;
 
@@ -24,6 +25,7 @@ public class Activity {
     private int maxParticipants;
     private List<String> participants;
     private ActivityType type;
+    private DifficultyLevel difficultyLevel; // Optional - null means for all levels
 
     public Activity() {
         this.participants = new ArrayList<>();
@@ -31,6 +33,11 @@ public class Activity {
 
     public Activity(String name, String description, String schedule,
             ScheduleDetails scheduleDetails, int maxParticipants, ActivityType type) {
+        this(name, description, schedule, scheduleDetails, maxParticipants, type, null);
+    }
+
+    public Activity(String name, String description, String schedule,
+            ScheduleDetails scheduleDetails, int maxParticipants, ActivityType type, DifficultyLevel difficultyLevel) {
         this.name = validateName(name);
         this.description = validateDescription(description);
         this.schedule = schedule;
@@ -38,6 +45,7 @@ public class Activity {
         this.maxParticipants = validateMaxParticipants(maxParticipants);
         this.participants = new ArrayList<>();
         this.type = type != null ? type : ActivityType.determineFromContent(name, description);
+        this.difficultyLevel = difficultyLevel; // Can be null for all-levels activities
     }
 
     public boolean canAddParticipant() {
@@ -145,5 +153,13 @@ public class Activity {
 
     public void setType(ActivityType type) {
         this.type = type != null ? type : ActivityType.determineFromContent(this.name, this.description);
+    }
+
+    public DifficultyLevel getDifficultyLevel() {
+        return difficultyLevel;
+    }
+
+    public void setDifficultyLevel(DifficultyLevel difficultyLevel) {
+        this.difficultyLevel = difficultyLevel;
     }
 }

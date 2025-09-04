@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📞 Suporte Técnico Urgente
+    url: mailto:suporte@mergingtonhigh.edu
+    about: Para problemas críticos que impedem o uso do sistema
+  - name: 📚 Documentação do Sistema
+    url: https://github.com/BrunoSouzaPicinini/java-copilot-code-agent/blob/main/docs/README.md
+    about: Consulte a documentação para dúvidas sobre como usar o sistema
+  - name: 💬 Discussões e Dúvidas
+    url: https://github.com/BrunoSouzaPicinini/java-copilot-code-agent/discussions
+    about: Para discussões gerais, dúvidas e sugestões que não são bugs ou solicitações específicas

@@ -1,0 +1,155 @@
+name: ✏️ Modificar Atividade Existente
+description: Solicitação para alterar detalhes de uma atividade existente
+title: "[MODIFICAR ATIVIDADE] "
+labels: ["enhancement", "atividade", "modificação", "professor"]
+assignees: ["copilot"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 📝 Modificação de Atividade Existente
+        
+        Use este formulário para solicitar alterações em uma atividade extracurricular que já existe no sistema.
+
+  - type: input
+    id: current-activity-name
+    attributes:
+      label: "📚 Nome da Atividade Atual"
+      description: "Nome exato da atividade que você quer modificar"
+      placeholder: "Ex: Clube de Xadrez, Aula de Programação"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: modification-type
+    attributes:
+      label: "🔧 O que você quer modificar?"
+      description: "Selecione todas as alterações necessárias"
+      options:
+        - label: "Nome da atividade"
+        - label: "Descrição"
+        - label: "Horário/Cronograma"
+        - label: "Número máximo de participantes"
+        - label: "Tipo de atividade"
+        - label: "Professor responsável"
+        - label: "Outros detalhes"
+
+  - type: input
+    id: new-activity-name
+    attributes:
+      label: "📚 Novo Nome (se aplicável)"
+      description: "Se você quer alterar o nome, informe o novo nome aqui"
+      placeholder: "Deixe em branco se não quiser alterar"
+    validations:
+      required: false
+
+  - type: textarea
+    id: new-description
+    attributes:
+      label: "📝 Nova Descrição (se aplicável)"
+      description: "Se você quer alterar a descrição, informe a nova descrição aqui"
+      placeholder: "Deixe em branco se não quiser alterar"
+    validations:
+      required: false
+
+  - type: textarea
+    id: new-schedule
+    attributes:
+      label: "📅 Novo Horário/Cronograma (se aplicável)"
+      description: "Se você quer alterar o horário, informe o novo cronograma"
+      placeholder: "Ex: Segundas e quartas das 15:00 às 17:00"
+    validations:
+      required: false
+
+  - type: input
+    id: new-max-participants
+    attributes:
+      label: "👥 Novo Número Máximo de Participantes (se aplicável)"
+      description: "Se você quer alterar o limite de participantes"
+      placeholder: "Ex: 25, 30, 15"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: new-activity-type
+    attributes:
+      label: "🏷️ Novo Tipo de Atividade (se aplicável)"
+      description: "Se você quer alterar o tipo da atividade"
+      options:
+        - "Não alterar"
+        - "CULTURAL (música, arte, teatro, literatura)"
+        - "ESPORTIVA (futebol, basquete, natação, atletismo)"
+        - "ACADEMICA (programação, xadrez, ciências, matemática)"
+        - "SOCIAL (voluntariado, liderança, debates)"
+    validations:
+      required: false
+
+  - type: input
+    id: new-teacher
+    attributes:
+      label: "👩‍🏫 Novo Professor(a) Responsável (se aplicável)"
+      description: "Se você quer alterar o professor responsável"
+      placeholder: "Ex: Prof. João Silva"
+    validations:
+      required: false
+
+  - type: textarea
+    id: modification-reason
+    attributes:
+      label: "❓ Motivo da Alteração"
+      description: "Explique por que essas mudanças são necessárias"
+      placeholder: "Ex: Mudança de disponibilidade, feedback dos estudantes, problemas logísticos..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact-considerations
+    attributes:
+      label: "⚠️ Considerações sobre Impacto"
+      description: "Há estudantes já inscritos? A mudança afetará alguma coisa importante?"
+      placeholder: "Ex: 15 estudantes já inscritos, precisa avisar os pais sobre mudança de horário..."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: acceptance-criteria
+    attributes:
+      label: "✅ Critérios de Aceitação (serão implementados automaticamente)"
+      options:
+        - label: "Atividade deve manter os estudantes já inscritos (se aplicável)"
+          required: true
+        - label: "Alterações devem aparecer corretamente no sistema"
+          required: true
+        - label: "Sistema deve continuar funcionando normalmente"
+          required: true
+        - label: "Se houver mudança de horário, deve ser refletida na interface"
+          required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ### 🤖 Para o Agente Copilot
+        
+        **Contexto**: Modificação de atividade existente no sistema de gerenciamento escolar.
+        
+        **Tarefas a implementar**:
+        1. Localizar a atividade existente no banco de dados
+        2. Aplicar as modificações solicitadas
+        3. Validar que as alterações respeitam as regras de negócio
+        4. Preservar dados importantes (como lista de participantes)
+        5. Atualizar a interface se necessário
+        6. Testar que a atividade modificada funciona corretamente
+        
+        **Arquivos relevantes**:
+        - `src/main/java/com/mergingtonhigh/schoolmanagement/domain/entities/Activity.java`
+        - `src/main/java/com/mergingtonhigh/schoolmanagement/application/usecases/ActivityUseCase.java`
+        - `src/main/java/com/mergingtonhigh/schoolmanagement/presentation/controllers/ActivityController.java`
+        - `src/main/resources/static/` (frontend)
+        
+        **Limitações**: 
+        - Não perder dados de estudantes já inscritos
+        - Manter integridade referencial
+        - Seguir padrões de validação do domínio
+        - Não quebrar funcionalidades existentes

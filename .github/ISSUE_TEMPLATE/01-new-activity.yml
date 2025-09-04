@@ -1,0 +1,121 @@
+name: 🎯 Nova Atividade Extracurricular
+description: Solicitação para adicionar uma nova atividade extracurricular ao sistema
+title: "[NOVA ATIVIDADE] "
+labels: ["enhancement", "atividade", "professor"]
+assignees: ["copilot"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 📋 Solicitação de Nova Atividade
+        
+        Use este formulário para solicitar a adição de uma nova atividade extracurricular ao sistema.
+        O agente Copilot utilizará essas informações para implementar a atividade automaticamente.
+
+  - type: input
+    id: activity-name
+    attributes:
+      label: "📚 Nome da Atividade"
+      description: "Nome completo da atividade extracurricular"
+      placeholder: "Ex: Clube de Xadrez, Aula de Programação, Clube de Arte"
+    validations:
+      required: true
+
+  - type: textarea
+    id: activity-description
+    attributes:
+      label: "📝 Descrição da Atividade"
+      description: "Descrição detalhada do que a atividade envolve"
+      placeholder: "Descreva os objetivos, metodologia e benefícios da atividade..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: activity-type
+    attributes:
+      label: "🏷️ Tipo de Atividade"
+      description: "Selecione o tipo que melhor descreve a atividade"
+      options:
+        - "CULTURAL (música, arte, teatro, literatura)"
+        - "ESPORTIVA (futebol, basquete, natação, atletismo)"
+        - "ACADEMICA (programação, xadrez, ciências, matemática)"
+        - "SOCIAL (voluntariado, liderança, debates)"
+    validations:
+      required: true
+
+  - type: input
+    id: max-participants
+    attributes:
+      label: "👥 Número Máximo de Participantes"
+      description: "Limite de estudantes que podem participar"
+      placeholder: "Ex: 20, 30, 15"
+    validations:
+      required: true
+
+  - type: textarea
+    id: schedule-details
+    attributes:
+      label: "📅 Horário e Cronograma"
+      description: "Quando a atividade acontecerá (dias da semana, horário, duração)"
+      placeholder: "Ex: Terças e quintas-feiras das 14:00 às 16:00"
+    validations:
+      required: true
+
+  - type: input
+    id: teacher-responsible
+    attributes:
+      label: "👩‍🏫 Professor(a) Responsável"
+      description: "Nome do professor que coordenará a atividade"
+      placeholder: "Ex: Prof. Maria Rodriguez"
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-requirements
+    attributes:
+      label: "📋 Requisitos Adicionais"
+      description: "Materiais, local, pré-requisitos ou outras informações importantes"
+      placeholder: "Ex: Sala com computadores, materiais de arte, experiência prévia..."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: acceptance-criteria
+    attributes:
+      label: "✅ Critérios de Aceitação (serão implementados automaticamente)"
+      description: "O que deve ser feito para considerar esta solicitação completa"
+      options:
+        - label: "Nova atividade deve aparecer na lista do sistema"
+          required: true
+        - label: "Estudantes devem poder se inscrever na atividade"
+          required: true
+        - label: "Sistema deve respeitar o limite máximo de participantes"
+          required: true
+        - label: "Horário deve ser exibido corretamente"
+          required: true
+        - label: "Professor responsável deve conseguir gerenciar a atividade"
+          required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ### 🤖 Para o Agente Copilot
+        
+        **Contexto**: Este é um sistema de gerenciamento escolar que usa Clean Architecture com Spring Boot e MongoDB.
+        
+        **Tarefas a implementar**:
+        1. Adicionar a nova atividade no banco de dados via migration (se necessário)
+        2. Verificar se o tipo de atividade existe no enum `ActivityType`
+        3. Garantir que a validação de participantes funciona corretamente
+        4. Testar a criação da atividade via API REST
+        5. Verificar se a atividade aparece na interface web
+        
+        **Arquivos relevantes**:
+        - `src/main/java/com/mergingtonhigh/schoolmanagement/domain/entities/Activity.java`
+        - `src/main/java/com/mergingtonhigh/schoolmanagement/domain/valueobjects/ActivityType.java`
+        - `src/main/java/com/mergingtonhigh/schoolmanagement/infrastructure/migrations/`
+        - `src/main/resources/static/` (frontend)
+        
+        **Limitações**: Manter a arquitetura limpa, não quebrar funcionalidades existentes, seguir padrões de validação do domínio.

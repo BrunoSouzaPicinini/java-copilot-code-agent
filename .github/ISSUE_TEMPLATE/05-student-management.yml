@@ -1,0 +1,170 @@
+name: 👥 Gerenciamento de Estudantes
+description: Solicitações relacionadas à inscrição, remoção ou gestão de estudantes
+title: "[ESTUDANTES] "
+labels: ["estudantes", "gestão", "professor"]
+assignees: ["copilot"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 👥 Gerenciamento de Estudantes
+        
+        Use este formulário para solicitações relacionadas ao gerenciamento de estudantes nas atividades extracurriculares.
+
+  - type: dropdown
+    id: request-type
+    attributes:
+      label: "🎯 Tipo de Solicitação"
+      description: "O que você precisa fazer com estudantes?"
+      options:
+        - "Inscrever estudante em atividade"
+        - "Remover estudante de atividade"
+        - "Transferir estudante entre atividades"
+        - "Resolver problema de inscrição"
+        - "Alterar informações de estudante"
+        - "Ver lista de estudantes de atividade"
+        - "Outros"
+    validations:
+      required: true
+
+  - type: input
+    id: student-name
+    attributes:
+      label: "👤 Nome do Estudante"
+      description: "Nome completo do estudante (se aplicável)"
+      placeholder: "Ex: João Silva Santos"
+    validations:
+      required: false
+
+  - type: input
+    id: student-email
+    attributes:
+      label: "📧 Email do Estudante"
+      description: "Email do estudante (se aplicável)"
+      placeholder: "Ex: joao.silva@email.com"
+    validations:
+      required: false
+
+  - type: input
+    id: activity-name
+    attributes:
+      label: "📚 Nome da Atividade"
+      description: "Qual atividade está envolvida na solicitação?"
+      placeholder: "Ex: Clube de Xadrez, Aula de Programação"
+    validations:
+      required: true
+
+  - type: textarea
+    id: specific-request
+    attributes:
+      label: "📝 Descrição Específica da Solicitação"
+      description: "Explique exatamente o que precisa ser feito"
+      placeholder: |
+        Ex: 
+        - Preciso inscrever o João na aula de programação
+        - A Maria precisa sair do clube de arte
+        - O Pedro foi inscrito por engano no xadrez
+    validations:
+      required: true
+
+  - type: textarea
+    id: context-reason
+    attributes:
+      label: "❓ Contexto/Motivo"
+      description: "Por que essa alteração é necessária?"
+      placeholder: "Ex: Estudante mudou de interesse, conflito de horário, erro na inscrição inicial..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency-level
+    attributes:
+      label: "⏰ Urgência"
+      description: "Quão urgente é esta solicitação?"
+      options:
+        - "Urgente - Precisa ser resolvido hoje"
+        - "Alta - Precisa ser resolvido esta semana"
+        - "Normal - Pode ser resolvido quando possível"
+        - "Baixa - Não há pressa"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: verification-items
+    attributes:
+      label: "✅ Verificações Necessárias"
+      description: "Que verificações devem ser feitas? (marque as aplicáveis)"
+      options:
+        - label: "Verificar se há vagas disponíveis na atividade"
+        - label: "Confirmar dados do estudante"
+        - label: "Verificar se estudante não está em atividade conflitante"
+        - label: "Verificar autorização dos pais (se necessário)"
+        - label: "Atualizar listas de presença"
+
+  - type: textarea
+    id: special-considerations
+    attributes:
+      label: "⚠️ Considerações Especiais"
+      description: "Há algo especial que devemos saber sobre este estudante ou situação?"
+      placeholder: "Ex: Estudante tem necessidades especiais, restrições de horário, questões médicas relevantes..."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: acceptance-criteria
+    attributes:
+      label: "✅ Critérios de Aceitação"
+      options:
+        - label: "Alteração deve ser refletida no sistema"
+          required: true
+        - label: "Estudante deve receber confirmação (se aplicável)"
+          required: true
+        - label: "Listas de atividades devem estar atualizadas"
+          required: true
+        - label: "Professor deve conseguir ver a alteração"
+          required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ### 🤖 Para o Agente Copilot
+        
+        **Contexto**: Gerenciamento de estudantes no sistema de atividades extracurriculares.
+        
+        **Tarefas típicas a implementar**:
+        1. **Para inscrições**: Verificar vagas, validar dados, adicionar à atividade
+        2. **Para remoções**: Localizar estudante, remover da atividade, atualizar contadores
+        3. **Para transferências**: Remover de uma e adicionar em outra atividade
+        4. **Para correções**: Identificar problema e aplicar correção adequada
+        
+        **Arquivos relevantes**:
+        - `src/main/java/com/mergingtonhigh/schoolmanagement/domain/entities/Activity.java` (lógica de participantes)
+        - `src/main/java/com/mergingtonhigh/schoolmanagement/application/usecases/StudentRegistrationUseCase.java`
+        - `src/main/java/com/mergingtonhigh/schoolmanagement/presentation/controllers/ActivityController.java`
+        - `src/main/java/com/mergingtonhigh/schoolmanagement/domain/valueobjects/Email.java` (validação de email)
+        
+        **Validações importantes**:
+        - Verificar limite máximo de participantes (`Activity.canAddParticipant()`)
+        - Validar formato de email (`Email` value object)
+        - Verificar se estudante já está inscrito (`Activity.isParticipantRegistered()`)
+        - Manter integridade dos dados
+        
+        **Casos especiais a considerar**:
+        - Atividade lotada (não pode adicionar mais estudantes)
+        - Estudante já inscrito na mesma atividade
+        - Email inválido ou duplicado
+        - Estudante não encontrado para remoção
+        
+        **Testes necessários**:
+        - Teste de inscrição com sucesso
+        - Teste de limite de participantes
+        - Teste de remoção de estudante
+        - Teste de validação de email
+        
+        **Limitações**:
+        - Seguir regras de negócio do domínio
+        - Não quebrar funcionalidades existentes
+        - Manter validações de segurança
+        - Preservar integridade referencial

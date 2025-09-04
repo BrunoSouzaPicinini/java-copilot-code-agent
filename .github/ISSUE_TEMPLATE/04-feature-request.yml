@@ -1,0 +1,168 @@
+name: ✨ Solicitação de Nova Funcionalidade
+description: Propor uma nova funcionalidade ou melhoria para o sistema
+title: "[FUNCIONALIDADE] "
+labels: ["enhancement", "funcionalidade", "professor"]
+assignees: ["copilot"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## ✨ Nova Funcionalidade ou Melhoria
+        
+        Use este formulário para solicitar uma nova funcionalidade ou melhoria no sistema de atividades extracurriculares.
+
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: "💡 Descrição da Funcionalidade"
+      description: "Descreva a funcionalidade que você gostaria de ver implementada"
+      placeholder: "Ex: Gostaria de poder enviar mensagens para todos os estudantes de uma atividade..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem-motivation
+    attributes:
+      label: "❓ Qual Problema Isso Resolve?"
+      description: "Explique qual necessidade ou dificuldade atual esta funcionalidade ajudaria"
+      placeholder: "Ex: Atualmente é difícil comunicar mudanças de horário para os estudantes..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: user-story
+    attributes:
+      label: "👤 História do Usuário"
+      description: "Descreva como você usaria essa funcionalidade no dia a dia"
+      value: |
+        Como professor(a), eu gostaria de [funcionalidade]
+        Para que eu possa [benefício/objetivo]
+        De modo que [resultado esperado]
+      placeholder: "Descreva o cenário de uso prático"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: feature-category
+    attributes:
+      label: "🏷️ Categoria da Funcionalidade"
+      description: "Que tipo de melhoria é esta?"
+      options:
+        - "Comunicação (notificações, mensagens)"
+        - "Relatórios e estatísticas"
+        - "Interface e usabilidade"
+        - "Gerenciamento de estudantes"
+        - "Gerenciamento de atividades"
+        - "Autenticação e segurança"
+        - "Integração com outros sistemas"
+        - "Outros"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: "📊 Prioridade"
+      description: "Quão importante é esta funcionalidade para você?"
+      options:
+        - "Muito alta - Seria extremamente útil no dia a dia"
+        - "Alta - Melhoraria significativamente o trabalho"
+        - "Média - Seria uma melhoria conveniente"
+        - "Baixa - Seria legal de ter, mas não é essencial"
+    validations:
+      required: true
+
+  - type: textarea
+    id: detailed-requirements
+    attributes:
+      label: "📋 Requisitos Detalhados"
+      description: "Liste características específicas que a funcionalidade deveria ter"
+      placeholder: |
+        Ex:
+        - Poder selecionar estudantes individualmente ou todos
+        - Mensagem deve ter limite de caracteres
+        - Estudantes devem receber por email
+        - Deve ter histórico de mensagens enviadas
+    validations:
+      required: true
+
+  - type: textarea
+    id: examples-references
+    attributes:
+      label: "📚 Exemplos ou Referências"
+      description: "Tem algum exemplo de como isso funciona em outros sistemas? Links, screenshots, etc."
+      placeholder: "Ex: O WhatsApp permite isso assim... O sistema da escola X tem uma função similar..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: constraints-limitations
+    attributes:
+      label: "⚠️ Restrições ou Limitações"
+      description: "Há alguma restrição que devemos considerar? (privacidade, regulamentos, etc.)"
+      placeholder: "Ex: Só professores podem enviar mensagens, deve respeitar LGPD, não pode ser usado fora do horário escolar..."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: acceptance-criteria
+    attributes:
+      label: "✅ Critérios de Aceitação (como saberemos que está pronto)"
+      description: "Marque o que deve acontecer para considerarmos a funcionalidade completa"
+      options:
+        - label: "Funcionalidade deve estar acessível na interface principal"
+        - label: "Deve funcionar conforme descrito nos requisitos"
+        - label: "Deve ser intuitiva para outros professores usarem"
+        - label: "Não deve quebrar funcionalidades existentes"
+        - label: "Deve ser testada com dados reais"
+
+  - type: dropdown
+    id: implementation-complexity
+    attributes:
+      label: "🔧 Complexidade Estimada (sua percepção)"
+      description: "Na sua opinião, quão complexo seria implementar isso?"
+      options:
+        - "Simples - Parece ser uma mudança pequena"
+        - "Médio - Pode precisar de algumas alterações"
+        - "Complexo - Parece exigir mudanças significativas"
+        - "Não tenho ideia da complexidade técnica"
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ### 🤖 Para o Agente Copilot
+        
+        **Contexto**: Implementação de nova funcionalidade no sistema de gerenciamento escolar.
+        
+        **Processo de desenvolvimento**:
+        1. Analisar a viabilidade técnica dentro da arquitetura existente
+        2. Identificar componentes que precisam ser criados ou modificados
+        3. Definir API REST necessária (se aplicável)
+        4. Implementar seguindo Clean Architecture
+        5. Criar testes para a nova funcionalidade
+        6. Integrar com frontend existente
+        7. Documentar a nova funcionalidade
+        
+        **Considerações arquiteturais**:
+        - Seguir padrões de Clean Architecture
+        - Adicionar no domínio se for regra de negócio
+        - Criar use cases na camada de aplicação
+        - Implementar controllers REST se necessário
+        - Atualizar frontend seguindo padrões existentes
+        
+        **Arquivos base para referência**:
+        - `src/main/java/com/mergingtonhigh/schoolmanagement/domain/` (regras de negócio)
+        - `src/main/java/com/mergingtonhigh/schoolmanagement/application/` (casos de uso)
+        - `src/main/java/com/mergingtonhigh/schoolmanagement/presentation/` (API REST)
+        - `src/main/java/com/mergingtonhigh/schoolmanagement/infrastructure/` (persistência)
+        - `src/main/resources/static/` (interface web)
+        
+        **Limitações**:
+        - Manter compatibilidade com funcionalidades existentes
+        - Seguir padrões de segurança e validação estabelecidos
+        - Não alterar arquitetura fundamental
+        - Implementar de forma incremental e testável

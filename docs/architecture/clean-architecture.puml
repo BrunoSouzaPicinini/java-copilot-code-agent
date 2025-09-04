@@ -18,6 +18,7 @@ package "Application Layer" {
 package "Domain Layer" {
     [Activity Entity]
     [Teacher Entity]
+    [ActivityType Value Object]
     [Email Value Object]
     [Schedule Details Value Object]
     [Repository Interfaces]
@@ -53,6 +54,7 @@ database "MongoDB" {
 [MongoDB Repositories] --> [activities] : persists to
 [MongoDB Repositories] --> [teachers] : persists to
 
+[Activity Entity] --> [ActivityType Value Object] : uses
 [Activity Entity] --> [Email Value Object] : uses
 [Activity Entity] --> [Schedule Details Value Object] : uses
 

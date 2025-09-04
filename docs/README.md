@@ -248,6 +248,66 @@ O sistema utiliza **Mongock** para realizar migrações automáticas do banco de
 - **Logs estruturados** - Nível DEBUG para desenvolvimento
 - **Health checks** - Status da aplicação e banco
 
+## 📋 Templates de Issues para Professores
+
+O sistema inclui **templates de issues personalizados** no GitHub para facilitar solicitações dos professores. Estes templates foram criados para simplificar o processo de solicitação de mudanças sem necessidade de conhecimento técnico.
+
+### 🎯 Templates Disponíveis
+
+1. **🎯 Nova Atividade Extracurricular** (`01-new-activity.yml`)
+   - Para solicitar adição de novas atividades
+   - Campos: nome, descrição, tipo, horário, responsável
+   - Automaticamente atribuído ao Copilot
+
+2. **✏️ Modificar Atividade Existente** (`02-modify-activity.yml`)
+   - Para alterar detalhes de atividades existentes
+   - Preserva dados de estudantes já inscritos
+   - Suporte para múltiplos tipos de alteração
+
+3. **🐛 Relatório de Bug/Problema** (`03-bug-report.yml`)
+   - Para reportar problemas técnicos
+   - Inclui passos para reprodução e contexto
+   - Sistema de priorização automática
+
+4. **✨ Solicitação de Nova Funcionalidade** (`04-feature-request.yml`)
+   - Para propor melhorias no sistema
+   - Análise de complexidade e viabilidade
+   - Critérios de aceitação claros
+
+5. **👥 Gerenciamento de Estudantes** (`05-student-management.yml`)
+   - Para inscrições, remoções e transferências
+   - Validações automáticas de capacidade
+   - Gestão de dados de estudantes
+
+### 🤖 Processo Automatizado
+
+1. **Professor preenche template** → Issue criada com dados estruturados
+2. **Atribuição automática** → Copilot recebe issue com contexto técnico
+3. **Implementação autônoma** → Agente codifica mudanças necessárias
+4. **Testes e validação** → Verificação automática de qualidade
+5. **Notificação de conclusão** → Professor recebe confirmação
+
+### 📁 Localização dos Templates
+
+```text
+.github/ISSUE_TEMPLATE/
+├── 01-new-activity.yml          # Nova atividade
+├── 02-modify-activity.yml       # Modificar atividade
+├── 03-bug-report.yml           # Relatório de bugs
+├── 04-feature-request.yml      # Nova funcionalidade
+├── 05-student-management.yml   # Gestão de estudantes
+├── config.yml                  # Configuração dos templates
+└── README.md                   # Guia para professores
+```
+
+### 💡 Benefícios
+
+- **Simplicidade**: Formulários guiados eliminam dúvidas técnicas
+- **Completude**: Templates garantem informações necessárias
+- **Automação**: Copilot implementa mudanças sem intervenção humana
+- **Qualidade**: Contexto técnico assegura implementações corretas
+- **Rapidez**: Processo otimizado para atendimento ágil
+
 ## 🚀 Deploy
 
 ### Perfis de Ambiente

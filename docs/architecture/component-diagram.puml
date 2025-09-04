@@ -12,8 +12,9 @@ Container_Boundary(webApp, "Spring Boot Web Application") {
     Component(authUseCase, "Authentication Use Case", "Application Service", "Orchestrates authentication logic")
     Component(registrationUseCase, "Student Registration Use Case", "Application Service", "Handles student registrations")
     
-    Component(activityEntity, "Activity Entity", "Domain Model", "Core activity business logic")
+    Component(activityEntity, "Activity Entity", "Domain Model", "Core activity business logic with automatic categorization")
     Component(teacherEntity, "Teacher Entity", "Domain Model", "Core teacher business logic")
+    Component(activityType, "ActivityType Enum", "Value Object", "Activity categorization logic")
     
     Component(activityRepo, "Activity Repository", "Data Access", "Activity data persistence")
     Component(teacherRepo, "Teacher Repository", "Data Access", "Teacher data persistence")
@@ -28,6 +29,7 @@ Rel(activityController, registrationUseCase, "Uses")
 Rel(authController, authUseCase, "Uses")
 
 Rel(activityUseCase, activityEntity, "Uses")
+Rel(activityUseCase, activityType, "Uses")
 Rel(authUseCase, teacherEntity, "Uses")
 Rel(registrationUseCase, activityEntity, "Uses")
 Rel(registrationUseCase, teacherEntity, "Uses")

@@ -34,15 +34,16 @@ public class ActivityController {
     }
 
     /**
-     * Get all activities with optional filtering by day and time.
+     * Get all activities with optional filtering by day, time, and difficulty level.
      */
     @GetMapping
     public ResponseEntity<Map<String, ActivityDTO>> getActivities(
             @RequestParam(required = false) String day,
             @RequestParam(name = "start_time", required = false) String startTime,
-            @RequestParam(name = "end_time", required = false) String endTime) {
+            @RequestParam(name = "end_time", required = false) String endTime,
+            @RequestParam(name = "difficulty_level", required = false) String difficultyLevel) {
 
-        Map<String, ActivityDTO> activities = activityUseCase.getActivities(day, startTime, endTime);
+        Map<String, ActivityDTO> activities = activityUseCase.getActivities(day, startTime, endTime, difficultyLevel);
         return ResponseEntity.ok(activities);
     }
 

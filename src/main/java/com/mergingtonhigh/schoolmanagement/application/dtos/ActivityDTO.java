@@ -13,7 +13,8 @@ public record ActivityDTO(
         int maxParticipants,
         List<String> participants,
         int currentParticipantCount,
-        ActivityTypeDTO type) {
+        ActivityTypeDTO type,
+        DifficultyLevelDTO difficultyLevel) {
     public record ScheduleDetailsDTO(
             List<String> days,
             String startTime,

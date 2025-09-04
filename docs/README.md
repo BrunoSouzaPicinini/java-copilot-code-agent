@@ -317,13 +317,14 @@ O sistema utiliza **Mongock** para realizar migrações automáticas do banco de
 - **Manga Maniacs** - Terças, 19:00-20:00
 
 #### 📚 Acadêmico
+- **Clube de Xadrez** - Segundas e sextas, 15:15-16:45
 - **Clube de Matemática** - Terças, 07:15-08:00
 - **Equipe de Debates** - Sextas, 15:30-17:30
 - **Olimpíada de Ciências** - Sábados, 13:00-16:00
 - **Torneio de Xadrez** - Domingos, 14:00-17:00
 
 #### 💻 Tecnologia
-- **Classe de Programação** - Quintas, 16:00-18:00
+- **Aula de Programação** - Terças e quintas, 07:00-08:00
 - **Oficina de Robótica** - Sábados, 10:00-14:00
 
 #### 🤝 Comunidade

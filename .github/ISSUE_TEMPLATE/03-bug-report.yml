@@ -1,0 +1,173 @@
+name: 🐛 Relatório de Bug/Problema
+description: Relatar um problema ou comportamento inesperado no sistema
+title: "[BUG] "
+labels: ["bug", "professor", "investigação"]
+assignees: ["copilot"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🐛 Relatório de Problema
+        
+        Use este formulário para relatar problemas, erros ou comportamentos inesperados no sistema de atividades extracurriculares.
+
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: "📋 Descrição do Problema"
+      description: "Descreva o que está acontecendo de errado"
+      placeholder: "Ex: Não consigo adicionar estudantes na atividade de xadrez, o sistema não salva as alterações..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: "🔄 Como Reproduzir o Problema"
+      description: "Liste os passos que levam ao problema (importante para diagnóstico)"
+      value: |
+        1. Primeiro eu...
+        2. Depois eu...
+        3. Então eu vejo...
+      placeholder: "Descreva passo a passo o que você fez quando o problema aconteceu"
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: "✅ Comportamento Esperado"
+      description: "O que deveria acontecer em vez do problema?"
+      placeholder: "Ex: O estudante deveria ser adicionado à lista da atividade..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: "❌ O que Realmente Acontece"
+      description: "Descreva exatamente o que você vê quando o problema ocorre"
+      placeholder: "Ex: Aparece uma mensagem de erro, a página não carrega, o botão não funciona..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: "📊 Frequência do Problema"
+      description: "Com que frequência isso acontece?"
+      options:
+        - "Sempre acontece"
+        - "Acontece na maioria das vezes"
+        - "Acontece às vezes"
+        - "Aconteceu apenas uma vez"
+        - "Não tenho certeza"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: "🚨 Urgência"
+      description: "Quão urgente é resolver este problema?"
+      options:
+        - "Crítico - Impede o trabalho completamente"
+        - "Alto - Dificulta muito o trabalho"
+        - "Médio - É inconveniente mas dá para contornar"
+        - "Baixo - É um pequeno incômodo"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: affected-area
+    attributes:
+      label: "🎯 Área Afetada"
+      description: "Qual parte do sistema está com problema?"
+      options:
+        - "Login/Autenticação"
+        - "Lista de atividades"
+        - "Inscrição de estudantes"
+        - "Gerenciamento de atividades"
+        - "Horários e cronogramas"
+        - "Interface geral"
+        - "Não tenho certeza"
+    validations:
+      required: true
+
+  - type: input
+    id: browser-device
+    attributes:
+      label: "💻 Navegador/Dispositivo"
+      description: "Qual navegador e dispositivo você estava usando?"
+      placeholder: "Ex: Chrome no Windows, Safari no iPad, Firefox no Mac..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: error-messages
+    attributes:
+      label: "⚠️ Mensagens de Erro"
+      description: "Se apareceu alguma mensagem de erro, copie exatamente aqui"
+      placeholder: "Cole aqui qualquer mensagem de erro que tenha aparecido..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: "🔧 Solução Temporária"
+      description: "Você encontrou alguma forma de contornar o problema?"
+      placeholder: "Ex: Se eu recarregar a página, funciona... Se eu usar outro navegador..."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: acceptance-criteria
+    attributes:
+      label: "✅ Critérios de Aceitação (para resolução do bug)"
+      options:
+        - label: "O problema deve ser reproduzido e identificado"
+          required: true
+        - label: "A causa raiz deve ser corrigida"
+          required: true
+        - label: "O comportamento deve voltar ao normal"
+          required: true
+        - label: "Deve ser testado para garantir que não volta a acontecer"
+          required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ### 🤖 Para o Agente Copilot
+        
+        **Contexto**: Investigação e correção de bug no sistema de gerenciamento escolar.
+        
+        **Processo de investigação**:
+        1. Reproduzir o problema descrito seguindo os passos fornecidos
+        2. Analisar logs de erro e comportamento do sistema
+        3. Identificar a causa raiz no código
+        4. Implementar correção mínima e precisa
+        5. Testar a correção
+        6. Verificar que não introduziu novos problemas
+        
+        **Áreas para investigar**:
+        - `src/main/java/com/mergingtonhigh/schoolmanagement/presentation/controllers/` (controllers REST)
+        - `src/main/java/com/mergingtonhigh/schoolmanagement/application/usecases/` (lógica de negócio)
+        - `src/main/java/com/mergingtonhigh/schoolmanagement/domain/entities/` (validações de domínio)
+        - `src/main/java/com/mergingtonhigh/schoolmanagement/infrastructure/` (persistência)
+        - `src/main/resources/static/` (interface frontend)
+        - `src/test/` (testes existentes)
+        
+        **Ferramentas de diagnóstico**:
+        - Logs da aplicação
+        - Testes unitários e de integração
+        - Validação da API REST
+        - Verificação do frontend
+        
+        **Limitações**: 
+        - Fazer correções mínimas e precisas
+        - Não quebrar funcionalidades existentes
+        - Manter padrões arquiteturais
+        - Adicionar testes se necessário para prevenir regressão

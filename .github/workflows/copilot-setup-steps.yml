@@ -2,7 +2,7 @@
 name: "Copilot Setup Steps"
 
 #> O check abaixo será utilizado no exercicio 3 deste repositório (o agente não deve marcar automaticamente)
-# [ ] - Aprendi sobre como configurar o copilot-setup-steps.
+# [X] - Aprendi sobre como configurar o copilot-setup-steps.
 
 # Define quando o workflow será executado automaticamente
 # Permite execução manual através da aba "Actions" do repositório para validação e testes
